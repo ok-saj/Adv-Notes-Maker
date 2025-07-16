@@ -52,26 +52,26 @@ export function NoteList({ notes, selectedNoteId, onNoteSelect }: NoteListProps)
 
   return (
     <div className="space-y-1">
-      <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <div className="text-sm font-medium text-text-200 mb-2">
         Notes ({notes.length})
       </div>
       {notes.map((note) => (
         <div
           key={note._id}
           className={cn(
-            "flex items-center justify-between group rounded-lg px-2 py-2 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700",
-            selectedNoteId === note._id && "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300"
+            "flex items-center justify-between group rounded-lg px-2 py-2 text-sm cursor-pointer hover:bg-background-300/50 transition-colors",
+            selectedNoteId === note._id && "bg-primary-100/20 text-primary-200 border border-primary-100/30"
           )}
           onClick={() => onNoteSelect(note._id)}
         >
           <div className="flex items-center flex-1 min-w-0">
-            <FileText className="h-4 w-4 mr-2 text-gray-600 dark:text-gray-400" />
+            <FileText className="h-4 w-4 mr-2 text-text-300" />
             <div className="flex-1 min-w-0">
-              <div className="font-medium truncate">{note.title}</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 truncate mt-1">
+              <div className="font-medium truncate text-text-100">{note.title}</div>
+              <div className="text-xs text-text-300 truncate mt-1">
                 {truncateContent(note.content)}
               </div>
-              <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+              <div className="text-xs text-text-300 mt-1">
                 {new Date(note.updatedAt).toLocaleDateString()}
               </div>
             </div>
@@ -81,13 +81,13 @@ export function NoteList({ notes, selectedNoteId, onNoteSelect }: NoteListProps)
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
+                className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 hover:bg-background-300"
                 onClick={(e) => e.stopPropagation()}
               >
                 <MoreVertical className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="glass">
               <DropdownMenuItem onClick={(e) => e.stopPropagation()}>
                 <Edit2 className="h-4 w-4 mr-2" />
                 Edit
@@ -106,7 +106,7 @@ export function NoteList({ notes, selectedNoteId, onNoteSelect }: NoteListProps)
                   e.stopPropagation();
                   handleDeleteNote(note._id);
                 }}
-                className="text-red-600 dark:text-red-400"
+                className="text-red-400 hover:text-red-300"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
                 Delete

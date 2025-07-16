@@ -42,30 +42,30 @@ export function Header({ onToggleSidebar }: HeaderProps) {
           </Button>
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl blur opacity-20"></div>
-              <div className="relative bg-primary/10 p-2 rounded-xl">
-                <FileText className="h-6 w-6 text-primary" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-accent-100 rounded-xl blur opacity-20"></div>
+              <div className="relative bg-primary-100/10 p-2 rounded-xl">
+                <FileText className="h-6 w-6 text-primary-100" />
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold gradient-text">
                 NoteMaker
               </h1>
-              <p className="text-xs text-muted-foreground">Professional Notes</p>
+              <p className="text-xs text-text-300">Professional Notes</p>
             </div>
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-300 h-4 w-4" />
             <Input
               type="text"
               placeholder="Search notes..."
               value={searchQuery}
               onChange={handleSearchChange}
               onFocus={() => setShowSearchResults(searchQuery.trim().length > 0)}
-              className="pl-10 w-64 bg-muted/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
+              className="pl-10 w-64 bg-background-300/50 border-background-300 focus:border-primary-100 focus:ring-primary-100/20 text-text-100 placeholder:text-text-300"
             />
             {showSearchResults && (
               <NoteSearchResults
@@ -76,7 +76,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
           </div>
           
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-20"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-accent-100 rounded-full blur opacity-20"></div>
             <UserButton
               appearance={{
                 elements: {

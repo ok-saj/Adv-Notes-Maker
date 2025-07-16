@@ -45,8 +45,8 @@ export function Sidebar({
         <div className="p-6 border-b border-border/50">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <h2 className="text-lg font-semibold text-foreground">
+              <Sparkles className="h-5 w-5 text-primary-100" />
+              <h2 className="text-lg font-semibold text-text-100">
                 Workspace
               </h2>
             </div>
@@ -55,7 +55,7 @@ export function Sidebar({
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowCreateNote(true)}
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                className="text-text-300 hover:text-primary-100 hover:bg-primary-100/10 transition-colors"
               >
                 <Plus className="h-4 w-4" />
               </Button>
@@ -63,7 +63,7 @@ export function Sidebar({
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowCreateFolder(true)}
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                className="text-text-300 hover:text-accent-100 hover:bg-accent-100/10 transition-colors"
               >
                 <FolderPlus className="h-4 w-4" />
               </Button>
@@ -75,26 +75,26 @@ export function Sidebar({
               variant="ghost"
               size="sm"
               onClick={() => setShowCreateNote(true)}
-              className="w-full justify-start text-left hover:bg-primary/10 hover:text-primary transition-colors group"
+              className="w-full justify-start text-left hover:bg-primary-100/10 hover:text-primary-100 transition-colors group"
             >
               <div className="flex items-center space-x-3">
-                <div className="p-1.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <FileText className="h-4 w-4 text-primary" />
+                <div className="p-1.5 rounded-lg bg-primary-100/10 group-hover:bg-primary-100/20 transition-colors">
+                  <FileText className="h-4 w-4 text-primary-100" />
                 </div>
-                <span>New Note</span>
+                <span className="text-text-200">New Note</span>
               </div>
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowCreateFolder(true)}
-              className="w-full justify-start text-left hover:bg-accent/10 hover:text-accent-foreground transition-colors group"
+              className="w-full justify-start text-left hover:bg-accent-100/10 hover:text-accent-100 transition-colors group"
             >
               <div className="flex items-center space-x-3">
-                <div className="p-1.5 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                  <FolderPlus className="h-4 w-4 text-accent-foreground" />
+                <div className="p-1.5 rounded-lg bg-accent-100/10 group-hover:bg-accent-100/20 transition-colors">
+                  <FolderPlus className="h-4 w-4 text-accent-100" />
                 </div>
-                <span>New Folder</span>
+                <span className="text-text-200">New Folder</span>
               </div>
             </Button>
           </div>
@@ -109,7 +109,7 @@ export function Sidebar({
             />
           </div>
 
-          <div className="p-4 border-t border-border/50">
+          <div className="p-4 border-t border-background-300">
             <NoteList
               notes={notes}
               selectedNoteId={selectedNoteId}

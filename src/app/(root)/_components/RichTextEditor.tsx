@@ -68,9 +68,9 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
   }, [content, editor]);
 
   return (
-    <div className="glass border border-border/50 rounded-xl overflow-hidden">
+    <div className="glass border border-background-300 rounded-xl overflow-hidden">
       <EditorToolbar editor={editor} />
-      <div className="bg-card/30 backdrop-blur-sm">
+      <div className="bg-background-200/30 backdrop-blur-sm">
         <EditorContent editor={editor} />
       </div>
     </div>

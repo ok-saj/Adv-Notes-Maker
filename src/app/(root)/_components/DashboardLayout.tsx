@@ -25,7 +25,7 @@ export function DashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="h-screen bg-gradient-to-br from-background via-muted/10 to-background flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-background-100 via-background-200/10 to-background-100 flex flex-col">
       <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex-1 flex overflow-hidden">
         <Sidebar

@@ -84,19 +84,19 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
   return (
     <div className="flex-1 flex flex-col h-full glass">
       {/* Header */}
-      <div className="border-b border-border/50 p-6 backdrop-blur-xl">
+      <div className="border-b border-background-300 p-6 backdrop-blur-xl">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4 flex-1">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-20"></div>
-              <div className="relative bg-primary/10 p-2 rounded-lg">
-                <FileText className="h-5 w-5 text-primary" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-accent-100 rounded-lg blur opacity-20"></div>
+              <div className="relative bg-primary-100/10 p-2 rounded-lg">
+                <FileText className="h-5 w-5 text-primary-100" />
               </div>
             </div>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="text-xl font-semibold border-none bg-transparent focus:ring-0 focus:outline-none text-foreground placeholder:text-muted-foreground"
+              className="text-xl font-semibold border-none bg-transparent focus:ring-0 focus:outline-none text-text-100 placeholder:text-text-300"
               placeholder="Untitled Note"
             />
           </div>
@@ -106,7 +106,7 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               size="sm"
               onClick={handleSave}
               disabled={isSaving}
-              className="hover:bg-primary/10 hover:text-primary transition-colors"
+              className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors"
             >
               <Save className="h-4 w-4 mr-2" />
               {isSaving ? "Saving..." : "Save"}
@@ -117,7 +117,7 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               variant="ghost"
               size="sm"
               onClick={() => setShowShareDialog(true)}
-              className="hover:bg-accent/10 hover:text-accent-foreground transition-colors"
+              className="hover:bg-accent-100/10 hover:text-accent-100 transition-colors"
             >
               <Share2 className="h-4 w-4 mr-2" />
               Share
@@ -128,16 +128,16 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
         {/* Tags */}
         <div className="flex items-center space-x-3 mb-4">
           <div className="flex items-center space-x-2">
-            <Tag className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm text-muted-foreground">Tags:</span>
+            <Tag className="h-4 w-4 text-text-300" />
+            <span className="text-sm text-text-300">Tags:</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
+              <Badge key={tag} variant="secondary" className="text-xs bg-primary-100/10 text-primary-100 border-primary-100/20 hover:bg-primary-100/20 transition-colors">
                 {tag}
                 <button
                   onClick={() => handleRemoveTag(tag)}
-                  className="ml-2 text-primary/70 hover:text-primary transition-colors"
+                  className="ml-2 text-primary-100/70 hover:text-primary-100 transition-colors"
                 >
                   ×
                 </button>
@@ -148,17 +148,17 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               onChange={(e) => setNewTag(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleAddTag()}
               placeholder="Add tag..."
-              className="w-24 h-7 text-xs border-border/50 bg-muted/30 focus:border-primary/50 focus:ring-primary/20"
+              className="w-24 h-7 text-xs border-background-300 bg-background-300/30 focus:border-primary-100 focus:ring-primary-100/20 text-text-100 placeholder:text-text-300"
             />
           </div>
         </div>
 
         {/* Last saved info */}
         {lastSaved && (
-          <div className="flex items-center text-xs text-muted-foreground">
+          <div className="flex items-center text-xs text-text-300">
             <Calendar className="h-3 w-3 mr-2" />
             <span>Last saved: {lastSaved.toLocaleString()}</span>
-            <Sparkles className="h-3 w-3 ml-2 text-primary" />
+            <Sparkles className="h-3 w-3 ml-2 text-primary-100" />
           </div>
         )}
       </div>

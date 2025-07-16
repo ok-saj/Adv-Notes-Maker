@@ -49,7 +49,7 @@ export function FolderTree({ folders, selectedFolderId, onFolderSelect }: Folder
 
   return (
     <div className="space-y-1">
-      <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <div className="text-sm font-medium text-text-200 mb-2">
         Folders
       </div>
       <Button
@@ -58,25 +58,25 @@ export function FolderTree({ folders, selectedFolderId, onFolderSelect }: Folder
         onClick={() => onFolderSelect(undefined)}
         className={cn(
           "w-full justify-start text-left mb-2",
-          selectedFolderId === undefined && "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300"
+          selectedFolderId === undefined && "bg-primary-100/20 text-primary-200 border border-primary-100/30"
         )}
       >
-        <Folder className="h-4 w-4 mr-2" />
+        <Folder className="h-4 w-4 mr-2 text-text-200" />
         All Notes
       </Button>
       {folders.map((folder) => (
         <div key={folder._id} className="space-y-1">
           <div
             className={cn(
-              "flex items-center justify-between group rounded-lg px-2 py-1.5 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700",
-              selectedFolderId === folder._id && "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300"
+              "flex items-center justify-between group rounded-lg px-2 py-1.5 text-sm cursor-pointer hover:bg-background-300/50 transition-colors",
+              selectedFolderId === folder._id && "bg-primary-100/20 text-primary-200 border border-primary-100/30"
             )}
           >
             <div className="flex items-center flex-1 min-w-0">
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-4 w-4 p-0 mr-1"
+                className="h-4 w-4 p-0 mr-1 text-text-300"
                 onClick={() => toggleFolder(folder._id)}
               >
                 {expandedFolders.has(folder._id) ? (
@@ -97,10 +97,10 @@ export function FolderTree({ folders, selectedFolderId, onFolderSelect }: Folder
                 ) : (
                   <Folder 
                     className="h-4 w-4 mr-2" 
-                    style={{ color: folder.color || '#6B7280' }}
+                    style={{ color: folder.color || '#d2ddf4' }}
                   />
                 )}
-                <span className="truncate">{folder.name}</span>
+                <span className="truncate text-text-100">{folder.name}</span>
               </div>
             </div>
             <DropdownMenu>
@@ -108,19 +108,19 @@ export function FolderTree({ folders, selectedFolderId, onFolderSelect }: Folder
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
+                  className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 hover:bg-background-300"
                 >
                   <MoreVertical className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="glass">
                 <DropdownMenuItem>
                   <Edit2 className="h-4 w-4 mr-2" />
                   Rename
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => handleDeleteFolder(folder._id)}
-                  className="text-red-600 dark:text-red-400"
+                  className="text-red-400 hover:text-red-300"
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
                   Delete

@@ -8,6 +8,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Custom color palette
+        primary: {
+          100: '#3477eb',
+          200: '#6296f0',
+          300: '#91b5f4',
+          DEFAULT: '#3477eb',
+        },
+        accent: {
+          100: '#ff9900',
+          200: '#ff9900',
+          300: '#ff9900',
+          DEFAULT: '#ff9900',
+        },
+        background: {
+          100: '#0b1b35',
+          200: '#0f264a',
+          300: '#14315f',
+          DEFAULT: '#0b1b35',
+        },
+        text: {
+          100: '#fbfcfe',
+          200: '#e7edf9',
+          300: '#d2ddf4',
+          DEFAULT: '#fbfcfe',
+        },
+        // Shadcn UI colors
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: 'hsl(var(--card))',
@@ -38,6 +64,7 @@ module.exports = {
         'slide-up': 'slideUp 0.3s ease-out',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
         'gradient': 'gradient 6s ease infinite',
+        'glow': 'glow 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -49,16 +76,28 @@ module.exports = {
           '100%': { transform: 'translateY(0)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
-          '50%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 5px rgba(52, 119, 235, 0.5)' },
+          '50%': { boxShadow: '0 0 20px rgba(52, 119, 235, 0.8)' },
         },
         gradient: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
         },
+        glow: {
+          '0%, 100%': { 
+            boxShadow: '0 0 5px rgba(52, 119, 235, 0.5)' 
+          },
+          '50%': { 
+            boxShadow: '0 0 20px rgba(52, 119, 235, 0.8), 0 0 30px rgba(255, 153, 0, 0.3)' 
+          },
+        },
       },
       backgroundSize: {
         '300%': '300%',
+      },
+      boxShadow: {
+        'glow-primary': '0 0 20px rgba(52, 119, 235, 0.3)',
+        'glow-accent': '0 0 20px rgba(255, 153, 0, 0.3)',
       },
     },
   },

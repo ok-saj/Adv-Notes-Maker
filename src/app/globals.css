@@ -4,25 +4,40 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    /* Custom Color Palette */
+    --primary-100: #3477eb;
+    --primary-200: #6296f0;
+    --primary-300: #91b5f4;
+    --accent-100: #ff9900;
+    --accent-200: #ff9900;
+    --accent-300: #ff9900;
+    --background-100: #0b1b35;
+    --background-200: #0f264a;
+    --background-300: #14315f;
+    --text-100: #fbfcfe;
+    --text-200: #e7edf9;
+    --text-300: #d2ddf4;
+
+    /* Shadcn UI Variables mapped to custom palette */
+    --background: 11 27 53; /* background-100 */
+    --foreground: 251 252 254; /* text-100 */
+    --card: 15 38 74; /* background-200 */
+    --card-foreground: 251 252 254; /* text-100 */
+    --popover: 15 38 74; /* background-200 */
+    --popover-foreground: 251 252 254; /* text-100 */
+    --primary: 52 119 235; /* primary-100 */
+    --primary-foreground: 251 252 254; /* text-100 */
+    --secondary: 20 49 95; /* background-300 */
+    --secondary-foreground: 231 237 249; /* text-200 */
+    --muted: 20 49 95; /* background-300 */
+    --muted-foreground: 210 221 244; /* text-300 */
+    --accent: 255 153 0; /* accent-100 */
+    --accent-foreground: 11 27 53; /* background-100 for contrast */
+    --destructive: 239 68 68;
+    --destructive-foreground: 251 252 254;
+    --border: 20 49 95; /* background-300 */
+    --input: 20 49 95; /* background-300 */
+    --ring: 98 150 240; /* primary-200 */
     --radius: 0.75rem;
   }
 
@@ -33,6 +48,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, rgb(15, 38, 74) 50%, rgb(20, 49, 95) 100%);
+    min-height: 100vh;
   }
 
   /* Custom scrollbar */
@@ -41,15 +58,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    background: rgb(20, 49, 95);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded-full;
+    background: rgb(52, 119, 235);
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
+    background: rgb(98, 150, 240);
   }
 
   /* Prose styles for rich text editor */
@@ -58,59 +76,151 @@
   }
 
   .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    @apply text-foreground;
+    color: rgb(251, 252, 254);
   }
 
   .prose p {
-    @apply text-foreground/90;
+    color: rgb(231, 237, 249);
   }
 
   .prose a {
-    @apply text-primary hover:text-primary/80;
+    color: rgb(52, 119, 235);
+  }
+
+  .prose a:hover {
+    color: rgb(98, 150, 240);
   }
 
   .prose blockquote {
-    @apply border-l-primary/50 text-foreground/80;
+    border-left-color: rgb(52, 119, 235);
+    color: rgb(210, 221, 244);
   }
 
   .prose code {
-    @apply bg-muted text-foreground px-1 py-0.5 rounded;
+    background-color: rgb(20, 49, 95);
+    color: rgb(251, 252, 254);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
   }
 
   .prose pre {
-    @apply bg-muted text-foreground;
+    background-color: rgb(20, 49, 95);
+    color: rgb(251, 252, 254);
   }
 
   /* TipTap editor styles */
   .ProseMirror {
     @apply outline-none min-h-[300px] p-4;
+    color: rgb(231, 237, 249);
   }
 
   .ProseMirror p.is-editor-empty:first-child::before {
-    @apply text-muted-foreground;
+    color: rgb(210, 221, 244);
     content: attr(data-placeholder);
     float: left;
     height: 0;
     pointer-events: none;
   }
 
-  /* Glass morphism effect */
+  /* Glass morphism effect with custom colors */
   .glass {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    background: rgba(15, 38, 74, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(52, 119, 235, 0.2);
   }
 
   /* Gradient backgrounds */
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    background: linear-gradient(135deg, rgb(11, 27, 53) 0%, rgb(15, 38, 74) 100%);
   }
 
   .gradient-border {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background: linear-gradient(135deg, rgb(52, 119, 235) 0%, rgb(255, 153, 0) 100%);
     padding: 1px;
     border-radius: var(--radius);
   }
 
   .gradient-border > * {
-    @apply bg-background rounded-[calc(var(--radius)-1px)];
+    background: rgb(11, 27, 53);
+    border-radius: calc(var(--radius) - 1px);
+  }
+
+  /* Custom button hover effects */
+  .btn-primary-hover:hover {
+    background: rgb(98, 150, 240);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 119, 235, 0.3);
+  }
+
+  .btn-accent-hover:hover {
+    background: rgb(255, 153, 0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+  }
+
+  /* Selection colors */
+  ::selection {
+    background: rgba(52, 119, 235, 0.3);
+    color: rgb(251, 252, 254);
+  }
+
+  /* Focus ring colors */
+  .focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 119, 235, 0.3);
+  }
+
+  /* Custom animations */
+  @keyframes glow {
+    0%, 100% { 
+      box-shadow: 0 0 5px rgba(52, 119, 235, 0.5);
+    }
+    50% { 
+      box-shadow: 0 0 20px rgba(52, 119, 235, 0.8), 0 0 30px rgba(255, 153, 0, 0.3);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Custom gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(52, 119, 235) 0%, rgb(255, 153, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover effects */
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 119, 235, 0.15);
+    border-color: rgba(52, 119, 235, 0.3);
+  }
+
+  /* Input focus styles */
+  input:focus, textarea:focus {
+    border-color: rgb(52, 119, 235);
+    box-shadow: 0 0 0 3px rgba(52, 119, 235, 0.1);
+  }
+
+  /* Dropdown menu styles */
+  .dropdown-item:hover {
+    background: rgba(52, 119, 235, 0.1);
+    color: rgb(251, 252, 254);
+  }
+
+  /* Badge styles */
+  .badge-primary {
+    background: rgba(52, 119, 235, 0.2);
+    color: rgb(98, 150, 240);
+    border: 1px solid rgba(52, 119, 235, 0.3);
+  }
+
+  .badge-accent {
+    background: rgba(255, 153, 0, 0.2);
+    color: rgb(255, 153, 0);
+    border: 1px solid rgba(255, 153, 0, 0.3);
   }
 }

@@ -79,14 +79,14 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
   ];
 
   return (
-    <div className="border-b border-border/50 p-3 flex flex-wrap gap-1 bg-muted/20 backdrop-blur-sm">
+    <div className="border-b border-background-300 p-3 flex flex-wrap gap-1 bg-background-300/20 backdrop-blur-sm">
       {/* Undo/Redo */}
       <Button
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().undo()}
-        className="hover:bg-primary/10 hover:text-primary transition-colors"
+        className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors"
       >
         <Undo className="h-4 w-4" />
       </Button>
@@ -95,17 +95,17 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         size="sm"
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().redo()}
-        className="hover:bg-primary/10 hover:text-primary transition-colors"
+        className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors"
       >
         <Redo className="h-4 w-4" />
       </Button>
 
-      <div className="w-px h-6 bg-border/50 mx-2" />
+      <div className="w-px h-6 bg-background-300 mx-2" />
 
       {/* Font Family */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             <Type className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -114,7 +114,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
             <DropdownMenuItem
               key={font.value}
               onClick={() => editor.chain().focus().setFontFamily(font.value).run()}
-              className="hover:bg-primary/10 hover:text-primary transition-colors"
+              className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors"
             >
               <span style={{ fontFamily: font.value }}>{font.label}</span>
             </DropdownMenuItem>
@@ -125,7 +125,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* Font Size */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             Size
           </Button>
         </DropdownMenuTrigger>
@@ -134,7 +134,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
             <DropdownMenuItem
               key={size.value}
               onClick={() => editor.chain().focus().setFontSize(size.value).run()}
-              className="hover:bg-primary/10 hover:text-primary transition-colors"
+              className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors"
             >
               {size.label}
             </DropdownMenuItem>
@@ -142,14 +142,14 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <div className="w-px h-6 bg-border/50 mx-2" />
+      <div className="w-px h-6 bg-background-300 mx-2" />
 
       {/* Text Formatting */}
       <Button
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleBold().run()}
-        className={`transition-colors ${editor.isActive('bold') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('bold') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Bold className="h-4 w-4" />
       </Button>
@@ -157,7 +157,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={`transition-colors ${editor.isActive('italic') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('italic') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Italic className="h-4 w-4" />
       </Button>
@@ -165,7 +165,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={`transition-colors ${editor.isActive('underline') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('underline') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Underline className="h-4 w-4" />
       </Button>
@@ -173,7 +173,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={`transition-colors ${editor.isActive('strike') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('strike') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Strikethrough className="h-4 w-4" />
       </Button>
@@ -181,7 +181,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* Text Color */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             <Palette className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -190,7 +190,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
             {colors.map((color) => (
               <button
                 key={color}
-                className="w-8 h-8 rounded-lg border border-border/50 hover:scale-110 transition-transform shadow-sm"
+                className="w-8 h-8 rounded-lg border border-background-300 hover:scale-110 transition-transform shadow-sm"
                 style={{ backgroundColor: color }}
                 onClick={() => editor.chain().focus().setColor(color).run()}
               />
@@ -202,7 +202,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* Highlight */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             <Highlighter className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -211,7 +211,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
             {highlightColors.map((color) => (
               <button
                 key={color}
-                className="w-8 h-8 rounded-lg border border-border/50 hover:scale-110 transition-transform shadow-sm"
+                className="w-8 h-8 rounded-lg border border-background-300 hover:scale-110 transition-transform shadow-sm"
                 style={{ backgroundColor: color }}
                 onClick={() => editor.chain().focus().setHighlight({ color }).run()}
               />
@@ -220,14 +220,14 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <div className="w-px h-6 bg-border/50 mx-2" />
+      <div className="w-px h-6 bg-background-300 mx-2" />
 
       {/* Alignment */}
       <Button
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
-        className={`transition-colors ${editor.isActive({ textAlign: 'left' }) ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive({ textAlign: 'left' }) ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <AlignLeft className="h-4 w-4" />
       </Button>
@@ -235,7 +235,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
-        className={`transition-colors ${editor.isActive({ textAlign: 'center' }) ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive({ textAlign: 'center' }) ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <AlignCenter className="h-4 w-4" />
       </Button>
@@ -243,19 +243,19 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
-        className={`transition-colors ${editor.isActive({ textAlign: 'right' }) ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive({ textAlign: 'right' }) ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <AlignRight className="h-4 w-4" />
       </Button>
 
-      <div className="w-px h-6 bg-border/50 mx-2" />
+      <div className="w-px h-6 bg-background-300 mx-2" />
 
       {/* Lists */}
       <Button
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`transition-colors ${editor.isActive('bulletList') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('bulletList') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <List className="h-4 w-4" />
       </Button>
@@ -263,19 +263,19 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={`transition-colors ${editor.isActive('orderedList') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('orderedList') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <ListOrdered className="h-4 w-4" />
       </Button>
 
-      <div className="w-px h-6 bg-border/50 mx-2" />
+      <div className="w-px h-6 bg-background-300 mx-2" />
 
       {/* Other Elements */}
       <Button
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleCode().run()}
-        className={`transition-colors ${editor.isActive('code') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('code') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Code className="h-4 w-4" />
       </Button>
@@ -283,7 +283,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
         variant="ghost"
         size="sm"
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        className={`transition-colors ${editor.isActive('blockquote') ? 'bg-primary/20 text-primary' : 'hover:bg-primary/10 hover:text-primary'}`}
+        className={`transition-colors ${editor.isActive('blockquote') ? 'bg-primary-100/20 text-primary-100' : 'hover:bg-primary-100/10 hover:text-primary-100'}`}
       >
         <Quote className="h-4 w-4" />
       </Button>
@@ -291,7 +291,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* Link */}
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             <Link className="h-4 w-4" />
           </Button>
         </PopoverTrigger>
@@ -301,9 +301,9 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
               placeholder="Enter URL"
               value={linkUrl}
               onChange={(e) => setLinkUrl(e.target.value)}
-              className="bg-muted/50 border-border/50"
+              className="bg-background-300/50 border-background-300 text-text-100 placeholder:text-text-300"
             />
-            <Button onClick={setLink} className="w-full bg-primary hover:bg-primary/90">
+            <Button onClick={setLink} className="w-full bg-primary-100 hover:bg-primary-200 text-text-100">
               Add Link
             </Button>
           </div>
@@ -313,7 +313,7 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* Image */}
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-colors">
+          <Button variant="ghost" size="sm" className="hover:bg-primary-100/10 hover:text-primary-100 transition-colors">
             <Image className="h-4 w-4" />
           </Button>
         </PopoverTrigger>
@@ -323,9 +323,9 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
               placeholder="Enter image URL"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              className="bg-muted/50 border-border/50"
+              className="bg-background-300/50 border-background-300 text-text-100 placeholder:text-text-300"
             />
-            <Button onClick={addImage} className="w-full bg-primary hover:bg-primary/90">
+            <Button onClick={addImage} className="w-full bg-primary-100 hover:bg-primary-200 text-text-100">
               Add Image
             </Button>
           </div>
