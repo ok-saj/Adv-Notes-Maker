@@ -8,6 +8,7 @@ import {
   Share2, 
   Tag,
   Calendar,
+  Sparkles,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { api } from "../../../../convex/_generated/api";
@@ -81,16 +82,21 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-white dark:bg-gray-900">
+    <div className="flex-1 flex flex-col h-full glass">
       {/* Header */}
-      <div className="border-b border-gray-200 dark:border-gray-700 p-4">
-        <div className="flex items-center justify-between mb-4">
+      <div className="border-b border-border/50 p-6 backdrop-blur-xl">
+        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4 flex-1">
-            <FileText className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-20"></div>
+              <div className="relative bg-primary/10 p-2 rounded-lg">
+                <FileText className="h-5 w-5 text-primary" />
+              </div>
+            </div>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="text-lg font-semibold border-none bg-transparent focus:ring-0 focus:outline-none"
+              className="text-xl font-semibold border-none bg-transparent focus:ring-0 focus:outline-none text-foreground placeholder:text-muted-foreground"
               placeholder="Untitled Note"
             />
           </div>
@@ -100,6 +106,7 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               size="sm"
               onClick={handleSave}
               disabled={isSaving}
+              className="hover:bg-primary/10 hover:text-primary transition-colors"
             >
               <Save className="h-4 w-4 mr-2" />
               {isSaving ? "Saving..." : "Save"}
@@ -110,6 +117,7 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               variant="ghost"
               size="sm"
               onClick={() => setShowShareDialog(true)}
+              className="hover:bg-accent/10 hover:text-accent-foreground transition-colors"
             >
               <Share2 className="h-4 w-4 mr-2" />
               Share
@@ -118,15 +126,18 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
         </div>
 
         {/* Tags */}
-        <div className="flex items-center space-x-2 mb-2">
-          <Tag className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-          <div className="flex flex-wrap gap-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="flex items-center space-x-2">
+            <Tag className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">Tags:</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
+              <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
                 {tag}
                 <button
                   onClick={() => handleRemoveTag(tag)}
-                  className="ml-1 text-gray-500 hover:text-gray-700"
+                  className="ml-2 text-primary/70 hover:text-primary transition-colors"
                 >
                   ×
                 </button>
@@ -137,22 +148,23 @@ export function NoteEditor({ note, onSave }: NoteEditorProps) {
               onChange={(e) => setNewTag(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleAddTag()}
               placeholder="Add tag..."
-              className="w-20 h-6 text-xs border-none bg-transparent focus:ring-0"
+              className="w-24 h-7 text-xs border-border/50 bg-muted/30 focus:border-primary/50 focus:ring-primary/20"
             />
           </div>
         </div>
 
         {/* Last saved info */}
         {lastSaved && (
-          <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-            <Calendar className="h-3 w-3 mr-1" />
-            Last saved: {lastSaved.toLocaleString()}
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Calendar className="h-3 w-3 mr-2" />
+            <span>Last saved: {lastSaved.toLocaleString()}</span>
+            <Sparkles className="h-3 w-3 ml-2 text-primary" />
           </div>
         )}
       </div>
 
       {/* Editor */}
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 overflow-y-auto p-6">
         <RichTextEditor
           content={content}
           onChange={setContent}

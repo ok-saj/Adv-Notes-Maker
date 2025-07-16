@@ -5,7 +5,6 @@ import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { Id } from "../../../../convex/_generated/dataModel";
 
-
 interface DashboardLayoutProps {
   children: React.ReactNode;
   selectedFolderId: Id<"folders"> | undefined;
@@ -26,7 +25,7 @@ export function DashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-background via-muted/10 to-background flex flex-col">
       <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex-1 flex overflow-hidden">
         <Sidebar

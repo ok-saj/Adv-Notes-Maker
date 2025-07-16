@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -38,6 +37,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'gradient': 'gradient 6s ease infinite',
       },
       keyframes: {
         fadeIn: {
@@ -52,6 +52,13 @@ module.exports = {
           '0%, 100%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
           '50%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' },
         },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      backgroundSize: {
+        '300%': '300%',
       },
     },
   },

@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { useQuery } from "convex/react";
 import { UserButton } from "@clerk/nextjs";
-import { Menu, Moon, Sun, Search, FileText } from "lucide-react";
+import { Menu, Search, FileText } from "lucide-react";
 import { NoteSearchResults } from "./NoteSearchResults";
-import { useTheme } from "@/providers/ThemeProvider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { api } from "../../../../convex/_generated/api";
@@ -15,7 +14,6 @@ interface HeaderProps {
 }
 
 export function Header({ onToggleSidebar }: HeaderProps) {
-  const { theme, setTheme } = useTheme();
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearchResults, setShowSearchResults] = useState(false);
 
@@ -31,35 +29,43 @@ export function Header({ onToggleSidebar }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+    <header className="glass border-b border-border/50 px-6 py-4 backdrop-blur-xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
             size="sm"
             onClick={onToggleSidebar}
-            className="lg:hidden"
+            className="lg:hidden hover:bg-muted/50"
           >
             <Menu className="h-5 w-5" />
           </Button>
-          <div className="flex items-center space-x-2">
-            <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              NoteMaker
-            </h1>
+          <div className="flex items-center space-x-3">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl blur opacity-20"></div>
+              <div className="relative bg-primary/10 p-2 rounded-xl">
+                <FileText className="h-6 w-6 text-primary" />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                NoteMaker
+              </h1>
+              <p className="text-xs text-muted-foreground">Professional Notes</p>
+            </div>
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
               type="text"
               placeholder="Search notes..."
               value={searchQuery}
               onChange={handleSearchChange}
               onFocus={() => setShowSearchResults(searchQuery.trim().length > 0)}
-              className="pl-10 w-64"
+              className="pl-10 w-64 bg-muted/50 border-border/50 focus:border-primary/50 focus:ring-primary/20"
             />
             {showSearchResults && (
               <NoteSearchResults
@@ -69,25 +75,16 @@ export function Header({ onToggleSidebar }: HeaderProps) {
             )}
           </div>
           
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          >
-            {theme === "light" ? (
-              <Moon className="h-5 w-5" />
-            ) : (
-              <Sun className="h-5 w-5" />
-            )}
-          </Button>
-          
-          <UserButton
-            appearance={{
-              elements: {
-                avatarBox: "h-8 w-8",
-              },
-            }}
-          />
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-20"></div>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "h-10 w-10 relative",
+                },
+              }}
+            />
+          </div>
         </div>
       </div>
     </header>

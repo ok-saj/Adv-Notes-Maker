@@ -6,12 +6,11 @@ import { FolderTree } from "./FolderTree";
 import { NoteList } from "./NoteList";
 import { CreateNoteDialog } from "./CreateNoteDialog";
 import { CreateFolderDialog } from "./CreateFolderDialog";
-import { Plus, FolderPlus, FileText } from "lucide-react";
+import { Plus, FolderPlus, FileText, Sparkles } from "lucide-react";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { api } from "../../../../convex/_generated/api";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-
 
 interface SidebarProps {
   isOpen: boolean;
@@ -39,21 +38,24 @@ export function Sidebar({
     <>
       <div
         className={cn(
-          "bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-all duration-300",
+          "glass border-r border-border/50 flex flex-col transition-all duration-300 backdrop-blur-xl",
           isOpen ? "w-80" : "w-0 overflow-hidden"
         )}
       >
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Notes
-            </h2>
-            <div className="flex space-x-2">
+        <div className="p-6 border-b border-border/50">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-2">
+              <Sparkles className="h-5 w-5 text-primary" />
+              <h2 className="text-lg font-semibold text-foreground">
+                Workspace
+              </h2>
+            </div>
+            <div className="flex space-x-1">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowCreateNote(true)}
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
               >
                 <Plus className="h-4 w-4" />
               </Button>
@@ -61,7 +63,7 @@ export function Sidebar({
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowCreateFolder(true)}
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
               >
                 <FolderPlus className="h-4 w-4" />
               </Button>
@@ -73,19 +75,27 @@ export function Sidebar({
               variant="ghost"
               size="sm"
               onClick={() => setShowCreateNote(true)}
-              className="w-full justify-start text-left"
+              className="w-full justify-start text-left hover:bg-primary/10 hover:text-primary transition-colors group"
             >
-              <FileText className="h-4 w-4 mr-2" />
-              New Note
+              <div className="flex items-center space-x-3">
+                <div className="p-1.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <FileText className="h-4 w-4 text-primary" />
+                </div>
+                <span>New Note</span>
+              </div>
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowCreateFolder(true)}
-              className="w-full justify-start text-left"
+              className="w-full justify-start text-left hover:bg-accent/10 hover:text-accent-foreground transition-colors group"
             >
-              <FolderPlus className="h-4 w-4 mr-2" />
-              New Folder
+              <div className="flex items-center space-x-3">
+                <div className="p-1.5 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <FolderPlus className="h-4 w-4 text-accent-foreground" />
+                </div>
+                <span>New Folder</span>
+              </div>
             </Button>
           </div>
         </div>
@@ -99,7 +109,7 @@ export function Sidebar({
             />
           </div>
 
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-4 border-t border-border/50">
             <NoteList
               notes={notes}
               selectedNoteId={selectedNoteId}

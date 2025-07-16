@@ -30,13 +30,13 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
       Image.configure({
         inline: true,
         HTMLAttributes: {
-          class: 'max-w-full h-auto rounded-lg',
+          class: 'max-w-full h-auto rounded-lg shadow-lg',
         },
       }),
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: 'text-blue-600 hover:text-blue-800 underline',
+          class: 'text-primary hover:text-primary/80 underline transition-colors',
         },
       }),
       Underline,
@@ -53,7 +53,7 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
     content,
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[400px] p-4',
+        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl max-w-none focus:outline-none min-h-[400px] p-6 text-foreground',
       },
     },
     onUpdate: ({ editor }) => {
@@ -68,9 +68,11 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
   }, [content, editor]);
 
   return (
-    <div className="border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+    <div className="glass border border-border/50 rounded-xl overflow-hidden">
       <EditorToolbar editor={editor} />
-      <EditorContent editor={editor} />
+      <div className="bg-card/30 backdrop-blur-sm">
+        <EditorContent editor={editor} />
+      </div>
     </div>
   );
 }
