@@ -21,7 +21,7 @@ export default function Dashboard() {
   );
 
   if (!user) {
-    // return null;
+     return null;
   }
 
   return (
